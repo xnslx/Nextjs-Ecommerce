@@ -9,7 +9,7 @@ async function handler(req, res) {
         case 'GET':
             try {
                 const products = await Products.find({})
-                console.log(products)
+                    // console.log(products)
                 res.status(200).json({ products: products })
             } catch (err) {
                 res.status(400).json({ message: 'Fail to fetch all the products.' })
