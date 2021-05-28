@@ -7,14 +7,14 @@ import {useRouter} from 'next/router'
 // import Products from '../models/Products'
 
 const ProductList = ({products}) => {
-    
+
     return (
-        <div>
+        <div className="grid grid-cols-2 w-10/12 gap-4 ml-auto mr-auto mt-8 lg:grid-cols-3">
             {products.map(product => (
                 <Link href={`/productlist/${product._id}`} key={product._id}><ul>
-                    <Image src={product.image} width="433" height="577"/>
-                    <li>{product.name}</li>
-                    <li>${product.price}</li>
+                    <Image src={product.image} width="433" height="577" className="absolute inset-0 w-full h-full object-cover"/>
+                    <li className="text-1xl leading-7 mb-2 font-bold font-mono">{product.name}</li>
+                    <li className="text-1xl leading-7 font-bold">${product.price}</li>
                 </ul></Link>
             ))}
         </div>

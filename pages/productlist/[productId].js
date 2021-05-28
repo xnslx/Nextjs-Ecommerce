@@ -5,17 +5,17 @@ import {useRouter} from 'next/router'
 import Image from 'next/image'
 
 const ProductItem = ({product}) => {
-    const router = useRouter()
-    console.log('router', router)
-    const productId = router.query.productId
     return (
-        <ul>
-            <Image src={product.image} width="433" height="577"/>
-            <li>{product.name}</li>
-            <li>$: {product.price}</li>
-            <li>Size: {product.size}</li>
-            <li>Stock: {product.stock}</li>
-        </ul>
+        <div className="w-10/12 ml-auto mr-auto mt-8">
+            <ul>
+                <Image src={product.image} width="433" height="577" className="absolute inset-0 w-full h-full object-cover border border-black shadow-offset-lime"/>
+                <li className="text-2xl leading-7 mb-2 font-bold font-mono mt-4">{product.name}</li>
+                <li className="text-1xl leading-7 mb-2 medium font-mono"> ${product.price}</li>
+                <li className="text-1xl leading-7 mb-2 medium font-mono">Size: {product.size}</li>
+                <li className="text-1xl leading-7 mb-2 medium font-mono">Stock: {product.stock}</li>
+            </ul>
+            <button className="border p-2 border-black shadow-offset-lime">Add to shopping cart</button>
+        </div>
     )
 };
 
