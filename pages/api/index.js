@@ -1,7 +1,7 @@
 import Products from '../../models/Products';
 import { connectToDatabase } from '../../util/db/db'
 
-async function handler(req, res) {
+export default async function getProducts(req, res) {
     const client = await connectToDatabase();
     const { method } = req
 
@@ -20,5 +20,3 @@ async function handler(req, res) {
             break
     }
 };
-
-export default handler

@@ -58,7 +58,7 @@ const ProductList = ({products}) => {
 
 export async function getStaticProps(context){
     console.log('context', context)
-    const res = await fetch('http://localhost:3000/api/productlist')
+    const res = await fetch('http://localhost:3000/api')
     const products = await res.json()
     console.log('indexjs', products)
     const productList = products.products

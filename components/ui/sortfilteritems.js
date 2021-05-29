@@ -33,8 +33,15 @@ const SortFilterItems = () => {
 
     console.log('params', params)
 
-    const submitHandler = (e) => {
-        console.log(e.target.value)
+    const submitHandler = async(e) => {
+        const response = await fetch('/api/filterresult?' + params, {
+            method:'POST',
+            'Content-Type' : 'application/json',
+        })
+
+        const data = await response.json()
+        console.log('data', data)
+        console.log('response', response)
     }
 
     return (
