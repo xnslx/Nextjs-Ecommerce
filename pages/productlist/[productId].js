@@ -5,6 +5,8 @@ import {useRouter} from 'next/router'
 import Image from 'next/image'
 
 const ProductItem = ({product}) => {
+    const router = useRouter()
+    console.log('[productid].js', router)
     return (
         <div className="w-10/12 ml-auto mr-auto mt-8">
             <ul>
@@ -34,5 +36,6 @@ export async function getServerSideProps({params}) {
         }
     }
 }
+
 
 export default ProductItem;

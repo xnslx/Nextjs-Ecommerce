@@ -1,8 +1,10 @@
 import React, {useState} from 'react'
 import {gender, size, category} from './sortfilterchoices'
 
+import {useRouter} from 'next/router'
+
 const SortFilterItems = (props) => {
-    console.log('sortfilteritems', props)
+    // console.log('sortfilteritems', props)
     const productsGender = gender;
     const productsSize = size;
     const productsCategory = category;
@@ -10,8 +12,10 @@ const SortFilterItems = (props) => {
     const [checkedItems, setCheckedItems] = useState({});
     const [meetRequirementItems, setMeetRequirementItems] = useState([])
 
-    console.log('checkedItems', checkedItems)
-    console.log('meetRequirementItems',meetRequirementItems)
+    // console.log('checkedItems', checkedItems)
+    // console.log('meetRequirementItems',meetRequirementItems)
+
+    const router = useRouter()
 
 
     const changeHandler = (e) => {
@@ -48,6 +52,10 @@ const SortFilterItems = (props) => {
         console.log('response', response)
         if(data.products) {
             props.cbHandler(data.products)
+            router.push({
+                pathname: '/productlist',
+                query:params,
+            })
             setMeetRequirementItems(data.products)
         }
         return;

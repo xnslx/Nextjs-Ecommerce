@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import Layout from '../components/layout/layout'
+import Header from '../components/layout/header'
 // import ProductList from '../pages/productlist/index'
 
 function Home() {

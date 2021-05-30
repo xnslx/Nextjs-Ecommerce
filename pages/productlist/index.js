@@ -29,20 +29,22 @@ const ProductList = ({products}) => {
 
 
     return (
-        <> 
+        <div className=""> 
             {open? <PopOver parentCallback={callbackHandler}/> : null}
-            <button onClick={clickHandler}><SortFilter /></button>
+            <button onClick={clickHandler} className=""><SortFilter /></button>
             <div className="grid grid-cols-2 w-11/12 gap-2 ml-auto mr-auto mt-8 lg:grid-cols-3">
                 {listProducts.map(product => (
-                    <Link href={`/productlist/${product._id}`} key={product._id}><ul>
-                        <Image src={product.image} width="433" height="577" className="absolute inset-0 w-full h-full object-cover "/>
-                        <FavoriteIcon />
-                        <li className="text-base leading-7 mb-2  font-mono">{product.name}</li>
-                        <li className="text-base leading-7">${product.price}</li>
-                    </ul></Link>
+                    <Link href={`/productlist/${product._id}`} key={product._id}>
+                        <ul>
+                            <Image src={product.image} width="433" height="577" className="absolute inset-0 w-full h-full object-cover "/>
+                            <FavoriteIcon />
+                            <li className="text-base leading-7 mb-2  font-mono">{product.name}</li>
+                            <li className="text-base leading-7">${product.price}</li>
+                        </ul>
+                    </Link>
                 ))}
             </div>
-        </>
+        </div>
     )
 };
 
