@@ -12,7 +12,8 @@ module.exports = {
                 cyan: colors.cyan,
             },
             boxShadow: {
-                'offset-lime': '4px 4px lime'
+                'offset-lime': '4px 4px lime',
+                'offset-black': '4px 4px black',
             }
         },
     },

@@ -3,8 +3,10 @@ import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 import SortFilterItems from './sortfilteritems'
 
-function PopOver() {
+function PopOver(props) {
+  console.log('popover', props)  
   const [open, setOpen] = useState(true)
+  const [checkedItems, setCheckedItems] = useState([])
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -53,7 +55,7 @@ function PopOver() {
                 </Transition.Child>
                 <div className="h-full flex flex-col py-6 bg-white overflow-y-scroll">
                   <div className="mt-6 relative flex-1 px-4 sm:px-6">
-                    <SortFilterItems />
+                    <SortFilterItems cbHandler={props.parentCallback}/>
                   </div>
                 </div>
               </div>

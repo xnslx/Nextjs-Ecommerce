@@ -5,12 +5,14 @@ import {useRouter} from 'next/router'
 import FavoriteIcon from '../../components/ui/fav'
 import SortFilter from '../../components/ui/sortfilter';
 import PopOver from '../../components/ui/popover';
+import SortFilterItems from '../../components/ui/sortfilteritems';
 
 // import {connectToDatabase} from '../util/db/db'
 // import Products from '../models/Products'
 
 const ProductList = ({products}) => {
     const [open, setOpen] = useState(false)
+    const [listProducts, setListProducts] = useState(products)
 
     const clickHandler = e => {
         e.preventDefault()
@@ -18,19 +20,22 @@ const ProductList = ({products}) => {
             open: !prevState.open
         }))
     }
-
-    const clickedHandler = (e) => {
-        console.log('hello')
+    
+    const callbackHandler = result => {
+        console.log('indexjs', result)
+        setListProducts(result)
     }
+    console.log('listProducts',listProducts)
+
 
     return (
         <> 
-            {open? <PopOver /> : null}
+            {open? <PopOver parentCallback={callbackHandler}/> : null}
             <button onClick={clickHandler}><SortFilter /></button>
             <div className="grid grid-cols-2 w-11/12 gap-2 ml-auto mr-auto mt-8 lg:grid-cols-3">
-                {products.map(product => (
+                {listProducts.map(product => (
                     <Link href={`/productlist/${product._id}`} key={product._id}><ul>
-                        <Image src={product.image} width="433" height="577" className="absolute inset-0 w-full h-full object-cover"/>
+                        <Image src={product.image} width="433" height="577" className="absolute inset-0 w-full h-full object-cover "/>
                         <FavoriteIcon />
                         <li className="text-base leading-7 mb-2  font-mono">{product.name}</li>
                         <li className="text-base leading-7">${product.price}</li>
@@ -57,12 +62,12 @@ const ProductList = ({products}) => {
 // }
 
 export async function getStaticProps(context){
-    console.log('context', context)
+    // console.log('context', context)
     const res = await fetch('http://localhost:3000/api')
     const products = await res.json()
-    console.log('indexjs', products)
+    // console.log('indexjs', products)
     const productList = products.products
-    console.log('productList', productList)
+    // console.log('productList', productList)
     const [productItem] = productList
     productItem._id = productItem._id.toString()
     

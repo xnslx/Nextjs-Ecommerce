@@ -1,14 +1,18 @@
 import React, {useState} from 'react'
 import {gender, size, category} from './sortfilterchoices'
 
-const SortFilterItems = () => {
+const SortFilterItems = (props) => {
+    console.log('sortfilteritems', props)
     const productsGender = gender;
     const productsSize = size;
     const productsCategory = category;
 
     const [checkedItems, setCheckedItems] = useState({});
+    const [meetRequirementItems, setMeetRequirementItems] = useState([])
 
     console.log('checkedItems', checkedItems)
+    console.log('meetRequirementItems',meetRequirementItems)
+
 
     const changeHandler = (e) => {
         setCheckedItems({...checkedItems, [e.target.value]: e.target.checked});
@@ -42,6 +46,11 @@ const SortFilterItems = () => {
         const data = await response.json()
         console.log('data', data)
         console.log('response', response)
+        if(data.products) {
+            props.cbHandler(data.products)
+            setMeetRequirementItems(data.products)
+        }
+        return;
     }
 
     return (
@@ -79,7 +88,7 @@ const SortFilterItems = () => {
                 </ul>
             </div>
             <div>
-                <button className="border font-mono p-2 w-4/5 border-black shadow-offset-lime" onClick={submitHandler}>
+                <button className="border font-mono p-2 w-4/5 bg-lime-300 border-black shadow-offset-black" onClick={submitHandler}>
                     <span className="text-sm">APPLY</span>
                 </button>
             </div>

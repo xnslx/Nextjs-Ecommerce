@@ -11,10 +11,11 @@ export default async function getProductsByFilterResult(req, res) {
     if (payload.category && payload.category.length > 0) query.category = { $in: payload.category }
     if (payload.size && payload.size.length > 0) query.size = { $in: payload.size };
     if (payload.gender && payload.gender.length > 0) query.gender = { $in: payload.gender };
-    Products.find(query).then(product => {
-        console.log('product', product)
-        res.status(201).json(product)
-    }).catch(err => {
-        console.log(err)
-    })
+    const result = await Products.find(query)
+    console.log('result', result)
+    if (result == '') {
+        res.status(403).json({ message: 'Can not find the product that you are looking for.' })
+        return;
+    }
+    res.status(201).json({ products: result })
 }
