@@ -52,10 +52,10 @@ const SortFilterItems = (props) => {
         console.log('response', response)
         if(data.products) {
             props.cbHandler(data.products)
-            router.push({
-                pathname: '/productlist',
-                query:params,
-            })
+            // router.push({
+            //     pathname: '/productlist',
+            //     query:params,
+            // })
             setMeetRequirementItems(data.products)
         }
         return;
