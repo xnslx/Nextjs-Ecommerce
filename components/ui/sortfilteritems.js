@@ -53,7 +53,7 @@ const SortFilterItems = (props) => {
         if(data.products) {
             props.cbHandler(data.products)
             // router.push({
-            //     pathname: '/productlist',
+            //     pathname: '/productlist/filterresult',
             //     query:params,
             // })
             setMeetRequirementItems(data.products)
@@ -63,7 +63,7 @@ const SortFilterItems = (props) => {
 
     return (
         <>
-            <div className="">
+            <div className="mt-8">
                 <ul className="mb-8">
                 <strong><span className="font-mono">Gender:</span></strong>
                     {productsGender.map(item => (

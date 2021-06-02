@@ -6,6 +6,7 @@ import FavoriteIcon from '../../components/ui/fav'
 import SortFilter from '../../components/ui/sortfilter';
 import PopOver from '../../components/ui/popover';
 import SortFilterItems from '../../components/ui/sortfilteritems';
+import SortAndFilter from '../../components/ui/sortandfilter'
 
 // import {connectToDatabase} from '../util/db/db'
 // import Products from '../models/Products'
@@ -31,7 +32,7 @@ const ProductList = ({products}) => {
     return (
         <div className=""> 
             {open? <PopOver parentCallback={callbackHandler}/> : null}
-            <button onClick={clickHandler} className=""><SortFilter /></button>
+            <a onClick={clickHandler} className=""><SortFilter /></a>
             <div className="grid grid-cols-2 w-11/12 gap-2 ml-auto mr-auto mt-8 lg:grid-cols-3">
                 {listProducts.map(product => (
                     <Link href={`/productlist/${product._id}`} key={product._id}>

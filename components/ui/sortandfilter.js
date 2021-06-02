@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
-import {slide as Menu} from 'react-burger-menu';
+import {slide as Menu} from 'react-burger-menu'
+import SortFilterItems from '../ui/sortfilteritems'
 
-const MenuIcon = (props) => {
+const SortAndFilter = (props) => {
     const [isMenuOpen, handleMenu] = useState(false)
     var styles = {
         bmBurgerButton: {
@@ -29,11 +30,10 @@ const MenuIcon = (props) => {
           height: '100%'
         },
         bmMenu: {
-          background: '#ffffff',
+          background: '#fafafa',
           padding: '2.5em 1.5em 0',
           fontSize: '1.15em',
-          width:'100vw',
-          marginTop:'-32px'
+          width:'100%'
         },
         bmMorphShape: {
           fill: '#373a47'
@@ -58,10 +58,12 @@ const MenuIcon = (props) => {
         handleMenu(state.isOpen)
     }
     return (
-        <Menu styles={styles} isOpen={isMenuOpen} onStateChange={handleStateChange}>
-            {props.children}
-        </Menu>
+        <div>
+            <Menu styles={styles} isOpen={isMenuOpen} onStateChange={handleStateChange}>
+                <SortFilterItems />
+            </Menu>
+        </div>
     )
 };
 
-export default MenuIcon;
+export default SortAndFilter;

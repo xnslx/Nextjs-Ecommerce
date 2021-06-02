@@ -9,7 +9,7 @@ function PopOver(props) {
   const [checkedItems, setCheckedItems] = useState([])
 
   return (
-    <Transition.Root show={open} as={Fragment}>
+    <Transition appear show={open} as={Fragment}>
       <Dialog as="div" static className="fixed inset-0 overflow-hidden" open={open} onClose={setOpen}>
         <div className="absolute inset-0 overflow-hidden">
           <Transition.Child
@@ -43,7 +43,7 @@ function PopOver(props) {
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
-                  <div className="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
+                  <div className="absolute top-0 right-0 -ml-8 pt-8 pr-8 flex sm:-ml-10 sm:pr-4">
                     <button
                       className="rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
                       onClick={() => setOpen(false)}
@@ -63,7 +63,7 @@ function PopOver(props) {
           </div>
         </div>
       </Dialog>
-    </Transition.Root>
+    </Transition>
   )
 }
 

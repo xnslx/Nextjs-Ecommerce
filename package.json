@@ -10,6 +10,7 @@
     "dependencies": {
         "@headlessui/react": "^1.2.0",
         "@heroicons/react": "^1.0.1",
+        "axios": "^0.21.1",
         "dotenv": "^10.0.0",
         "mongodb": "^3.6.8",
         "mongoose": "^5.12.11",
