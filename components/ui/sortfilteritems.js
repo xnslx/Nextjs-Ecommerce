@@ -11,6 +11,7 @@ const SortFilterItems = (props) => {
 
     const [checkedItems, setCheckedItems] = useState({});
     const [meetRequirementItems, setMeetRequirementItems] = useState([])
+    
 
     // console.log('checkedItems', checkedItems)
     // console.log('meetRequirementItems',meetRequirementItems)

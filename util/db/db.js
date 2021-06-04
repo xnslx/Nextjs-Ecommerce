@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 require('dotenv').config();
 
-const dbUrl = process.env.MONGODB_URL;
+const dbUrl = process.env.MONGODB_ATLAS;
 
 console.log(dbUrl)
 

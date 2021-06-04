@@ -39,7 +39,7 @@ const MenuIcon = (props) => {
           fill: '#373a47'
         },
         bmItemList: {
-          color: '#b8b7ad',
+          color: '#111827',
           padding: '0.8em'
         },
         bmItem: {
