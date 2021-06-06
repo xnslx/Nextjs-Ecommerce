@@ -27,7 +27,7 @@ function Login(props) {
             
 
             if(!result.error) {
-                // router.replace('/posts')
+                router.replace('/profile')
                 console.log('ok')
             }
             if(result.error) {
