@@ -24,22 +24,6 @@ const FavoriteList = (props) => {
     return <p>You need to log in first.</p>
 };
 
-// export async function getServerSideProps(context) {
-//     // console.log('context', context)
-//     // const session = await getSession(context)
-//     // const res = await fetch('http://localhost:3000/api/favoritelist',{
-//     //     method:'GET',
-//     //     headers: {
-//     //         'Content-Type': 'application/json'
-//     //     }
-//     // })
-//     // const data = await res.json()
-//     // console.log('data',data)
-//     // return {
-//     //    props:{
-//     //        session: await getSession(context)
-//     //    } 
-//     // }
-// }
+
 
 export default FavoriteList;

@@ -15,9 +15,7 @@ export default async(req, res) => {
 }
 
 const toggleFavoriteList = async(req, res) => {
-
     const session = await getSession({ req })
-
     const prodId = req.body.prodId
     if (session) {
         try {
@@ -54,9 +52,12 @@ const getFavoriteList = async(req, res) => {
         try {
             const user = await User.findOne({ email: session.user.email })
             console.log('getFaavoriteList', user)
-
             const favList = user.favoriteList.items
-            res.status(200).json({ favoriteList: favList })
+            console.log('favList', favList)
+            const detailedproducts = await user.populate('favoriteList.items.productId').execPopulate()
+
+            console.log('detailedproducts', detailedproducts.favoriteList.items)
+            res.status(200).json({ favoriteList: detailedproducts.favoriteList.items })
         } catch (err) {
             console.log(err)
         }
