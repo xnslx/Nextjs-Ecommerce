@@ -7,6 +7,7 @@ import SortFilter from '../../components/ui/sortfilter';
 import PopOver from '../../components/ui/popover';
 import SortFilterItems from '../../components/ui/sortfilteritems';
 import SortAndFilter from '../../components/ui/sortandfilter'
+import axios from 'axios'
 
 // import {connectToDatabase} from '../util/db/db'
 // import Products from '../models/Products'
@@ -28,6 +29,14 @@ const ProductList = ({products}) => {
     }
     console.log('listProducts',listProducts)
 
+    const toggleFavHandler = (prodId) => {
+        axios.post('http://localhost:3000/api/favoritelist', {
+            prodId:prodId
+        }).then(res => {
+            console.log(res)
+        })
+    }
+    
 
     return (
         <div className=""> 
@@ -38,7 +47,7 @@ const ProductList = ({products}) => {
                     <Link href={`/productlist/${product._id}`} key={product._id}>
                         <ul>
                             <Image src={product.image} width="433" height="577" className="absolute inset-0 w-full h-full object-cover "/>
-                            <FavoriteIcon />
+                            <button onClick={() =>toggleFavHandler(product._id)}><FavoriteIcon/></button>
                             <li className="text-base leading-7 mb-2  font-mono">{product.name}</li>
                             <li className="text-base leading-7">${product.price}</li>
                         </ul>
