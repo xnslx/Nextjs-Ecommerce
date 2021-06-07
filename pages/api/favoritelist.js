@@ -15,9 +15,9 @@ export default async(req, res) => {
 }
 
 const toggleFavoriteList = async(req, res) => {
-    console.log('req.body', req.body)
+
     const session = await getSession({ req })
-    console.log('session', session)
+
     const prodId = req.body.prodId
     if (session) {
         try {
@@ -41,7 +41,27 @@ const toggleFavoriteList = async(req, res) => {
         }
     }
     if (!session) {
-        res.send('you need to log in first')
+        res.send('You need to log in first')
     }
 
+}
+
+
+const getFavoriteList = async(req, res) => {
+    const session = await getSession({ req })
+    console.log('getFavoriteList', session)
+    if (session) {
+        try {
+            const user = await User.findOne({ email: session.user.email })
+            console.log('getFaavoriteList', user)
+
+            const favList = user.favoriteList.items
+            res.status(200).json({ favoriteList: favList })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    if (!session) {
+        res.send('You need to log in first')
+    }
 }

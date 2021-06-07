@@ -22,7 +22,6 @@ const Profile = () => {
 };
 
 export async function getServerSideProps(context) {    
-    console.log('profilejs', context)
     return {
         props:{
             session: await getSession(context)

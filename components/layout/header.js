@@ -17,7 +17,7 @@ const Header = () => {
                 <MenuItems />
             </MenuIcon>
             <div className="flex flex-row justify-end mr-4 mt-8">
-                <FavoriteIcon />
+                <Link href='/favoritelist'><a><FavoriteIcon /></a></Link>
                 <ShoppingCartIcon />
                 <Link href='/profile'><a><UserIcon />{session? <span>{session.user.name}</span>: null}</a></Link>
             </div>
