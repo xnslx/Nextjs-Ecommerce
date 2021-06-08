@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {getSession, signIn, useSession} from 'next-auth/client'
+import EmptyState from '../components/emptystate'
 
 const Profile = () => {
     const [isLoading, setIsLoading] = useState(true)
@@ -16,7 +17,7 @@ const Profile = () => {
     // },[])
     return (
         <div>
-            {session? <p> profile page</p> : <p>You need to log in </p>}
+            {session? <p> profile page</p> : <EmptyState  />}
         </div>
     )
 };
