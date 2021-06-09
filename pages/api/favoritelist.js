@@ -27,7 +27,7 @@ const toggleFavoriteList = async(req, res) => {
             const itemIndex = favList.map(item => item.productId).indexOf(prodId)
             console.log('favList', favList)
             console.log('itemIndex', itemIndex)
-            if (itemIndex > 0) {
+            if (itemIndex >= 0) {
                 user.removeProductFromFavList(product)
                 res.status(201).json({ message: 'Remove product from favorite list', favList: favList })
             } else if (itemIndex < 0) {

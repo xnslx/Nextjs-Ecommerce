@@ -44,14 +44,14 @@ const ProductList = ({products}) => {
             <a onClick={clickHandler} className=""><SortFilter /></a>
             <div className="grid grid-cols-2 w-11/12 gap-2 ml-auto mr-auto mt-8 lg:grid-cols-3">
                 {listProducts.map(product => (
-                    <Link href={`/productlist/${product._id}`} key={product._id}>
+                    <div key={product._id}>
                         <ul>
-                            <Image src={product.image} width="433" height="577" className="absolute inset-0 w-full h-full object-cover "/>
+                            <a href={`/productlist/${product._id}`}><Image src={product.image} width="433" height="577" className="absolute inset-0 w-full h-full object-cover "/></a>
                             <button onClick={() =>toggleFavHandler(product._id)}><FavoriteIcon/></button>
                             <li className="text-base leading-7 mb-2  font-mono">{product.name}</li>
                             <li className="text-base leading-7">${product.price}</li>
                         </ul>
-                    </Link>
+                    </div>
                 ))}
             </div>
         </div>
