@@ -18,7 +18,12 @@ const FavoriteList = (props) => {
             console.log(err)
         })
     },[])
-    if(session){
+    if(items.length === 0){
+        return(
+            <p className="text-base mt-12 w-2/3 ml-auto mr-auto text-center font-bold leading-7 mb-2 font-mono">Start adding some products to your favorite list!</p>
+        )
+    }
+    if(session && items.length >0){
         return (
             <div>
                 <FavoriteListItems items={items}/>
