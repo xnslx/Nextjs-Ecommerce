@@ -73,9 +73,9 @@ userSchema.methods.addToShoppingCart = function(product) {
     return this.save()
 }
 
-userSchema.methods.removeProductFromShoppingCart = function(productId) {
+userSchema.methods.removeProductFromShoppingCart = function(product) {
     const needToBeRemovedProductIndex = this.shoppingCart.items.findIndex(prod => {
-        return prod.productId.toString() === productId.toString()
+        return prod.productId.toString() === product._id.toString()
     })
     const removedProductItem = this.shoppingCart.items.splice(needToBeRemovedProductIndex, 1)
     this.shoppingCart = this.shoppingCart

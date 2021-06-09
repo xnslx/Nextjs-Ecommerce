@@ -1,14 +1,15 @@
 import React from 'react'
 import Image from 'next/image'
 import FavoriteIcon from '../components/ui/fav'
-import ShoppingCartIcon from '../components/ui/shoppingcart'
+import Bin from '../components/ui/bin'
 import axios from 'axios'
 
-const FavoriteListItems = (props) => {
-    console.log(props)
+const ShoppingCartItems = (props) => {
+    console.log('shoppingcartitems', props)
 
-    const toggleFavHandler = (prodId) => {
-        axios.post('http://localhost:3000/api/favoritelist', {
+    const toggleShoppingCart = (prodId) => {
+        console.log('toggleShoppingCart', prodId)
+        axios.post('http://localhost:3000/api/shoppingcart', {
             prodId:prodId
         }).then(res => {
             console.log(res)
@@ -24,8 +25,8 @@ const FavoriteListItems = (props) => {
                         <li className="text-sm leading-7  font-mono">${item.productId.price}</li>
                         <li className="text-sm leading-7  font-mono">Size:{item.productId.size}</li>
                         <li className="text-sm leading-7  font-mono">Stock:{item.productId.stock}</li>
-                        <button className="border text-sm p-2 mb-8 border-black shadow-offset-lime">CART</button>
-                        <button className="border text-sm mb-8 p-2 ml-2 border-black shadow-offset-lime" onClick={() =>toggleFavHandler(item.productId._id)}>FAVORITE</button>
+                        <button className=" border text-sm mb-8 p-2 border-black shadow-offset-lime" onClick={() =>toggleFavHandler(item.productId._id)}><FavoriteIcon /></button>
+                        <button className="border ml-4 text-sm mb-8 p-2 border-black shadow-offset-lime" onClick={() =>toggleShoppingCart (item.productId._id)}><Bin /></button>
                     </ul>
                 ))}
             </div>
@@ -33,4 +34,4 @@ const FavoriteListItems = (props) => {
     )
 };
 
-export default FavoriteListItems;
+export default ShoppingCartItems;

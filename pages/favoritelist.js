@@ -9,6 +9,7 @@ const FavoriteList = (props) => {
     const [isLoading, setIsLoading] = useState(true)
     console.log('FavoriteList' ,session)
     const [items, setItems] = useState([])
+    console.log(items)
 
     useEffect(() => {
         axios.get('http://localhost:3000/api/favoritelist').then(res => {
@@ -18,12 +19,12 @@ const FavoriteList = (props) => {
             console.log(err)
         })
     },[])
-    if(items.length === 0){
-        return(
-            <p className="text-base mt-12 w-2/3 ml-auto mr-auto text-center font-bold leading-7 mb-2 font-mono">Start adding some products to your favorite list!</p>
-        )
-    }
-    if(session && items.length >0){
+    // if(items.length === 0){
+    //     return(
+    //         <p className="text-base mt-12 w-2/3 ml-auto mr-auto text-center font-bold leading-7 mb-2 font-mono">Start adding some products to your favorite list!</p>
+    //     )
+    // }
+    if(session){
         return (
             <div>
                 <FavoriteListItems items={items}/>
