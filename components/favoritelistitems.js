@@ -16,6 +16,7 @@ const FavoriteListItems = (props) => {
     }
     return (
         <>
+            <h1 className="text-base text-center font-bold leading-7 mb-2 font-mono">Favorite List</h1>
             <div className="grid grid-cols-2 w-11/12 gap-2 ml-auto mr-auto mt-8 lg:grid-cols-3">
                 {props.items.map(item => (
                     <ul key={item.productId._id}>

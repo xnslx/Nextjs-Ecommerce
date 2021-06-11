@@ -55,7 +55,6 @@ const getShoppingCart = async(req, res) => {
             const shoppingcart = user.shoppingCart.items
             console.log('shoppingcart', shoppingcart)
             const detailedproducts = await user.populate('shoppingCart.items.productId').execPopulate()
-
             console.log('detailedproducts', detailedproducts.shoppingCart.items)
             res.status(200).json({ shoppingCart: detailedproducts.shoppingCart.items })
         } catch (err) {

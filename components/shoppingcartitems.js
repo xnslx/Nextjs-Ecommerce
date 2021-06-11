@@ -17,6 +17,7 @@ const ShoppingCartItems = (props) => {
     }
     return (
         <>
+            <h1 className="text-base text-center font-bold leading-7 mb-2 font-mono">Shopping Cart</h1>
             <div className="grid grid-cols-2 w-11/12 gap-2 ml-auto mr-auto mt-8 lg:grid-cols-3">
                 {props.items.map(item => (
                     <ul key={item.productId._id}>
@@ -29,6 +30,9 @@ const ShoppingCartItems = (props) => {
                         <button className="border ml-4 text-sm mb-8 p-2 border-black shadow-offset-lime" onClick={() =>toggleShoppingCart (item.productId._id)}><Bin /></button>
                     </ul>
                 ))}
+            </div>
+            <div className="w-3/4 ml-auto mr-auto">
+                <button className="border w-full text-sm mb-8 p-2 border-black shadow-offset-black font-mono bg-lime-300 text-black">PROCESS TO CHECKOUT</button>
             </div>
         </>
     )

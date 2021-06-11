@@ -21,12 +21,8 @@ const toggleFavoriteList = async(req, res) => {
         try {
             const user = await User.findOne({ email: session.user.email })
             const product = await Products.findById(prodId)
-            console.log(user)
-            console.log('toggle', product)
             const favList = user.favoriteList.items
             const itemIndex = favList.map(item => item.productId).indexOf(prodId)
-            console.log('favList', favList)
-            console.log('itemIndex', itemIndex)
             if (itemIndex >= 0) {
                 user.removeProductFromFavList(product)
                 res.status(201).json({ message: 'Remove product from favorite list', favList: favList })
@@ -47,16 +43,11 @@ const toggleFavoriteList = async(req, res) => {
 
 const getFavoriteList = async(req, res) => {
     const session = await getSession({ req })
-    console.log('getFavoriteList', session)
     if (session) {
         try {
             const user = await User.findOne({ email: session.user.email })
-            console.log('getFaavoriteList', user)
             const favList = user.favoriteList.items
-            console.log('favList', favList)
             const detailedproducts = await user.populate('favoriteList.items.productId').execPopulate()
-
-            console.log('detailedproducts', detailedproducts.favoriteList.items)
             res.status(200).json({ favoriteList: detailedproducts.favoriteList.items })
         } catch (err) {
             console.log(err)
